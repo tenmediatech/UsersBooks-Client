@@ -78,7 +78,6 @@ const onGetBooks = (event) => {
 }
 
 const onClearBooks = (event) => {
-  alert('clearBooks')
   event.preventDefault()
   ui.clearBooks()
 }

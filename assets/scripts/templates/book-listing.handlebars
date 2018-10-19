@@ -1,0 +1,16 @@
+{{#each books as |book|}}
+  <!--{{log book}}  it will console log what is information in book -->
+  <!-- {{> partial}} -->
+  <div>
+    <h1 data-id="{{book.id}}"> <small>Title: {{book.title}}</small></h1>
+    <section data-id="{{book.id}}">
+    <!-- <p>{{#if book.author}}
+      By: {{book.author}}
+        {{else}}
+        No author provided.
+      {{/if}}
+    </p> -->
+      <button type="submit" value="Remove" class="btn btn-default">Remove</button>
+    </section>
+  </div>
+{{/each}}
