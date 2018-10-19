@@ -3,7 +3,6 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
-const store = require('../store.js')
 
 // SignUp
 const onSignUp = function (event) {
@@ -39,73 +38,72 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
-// Create Game
-const onCreateGame = function () {
-  event.preventDefault()
-  store.click = 0
-  for (let i = 1; i < 10; i++) {
-    $(`#box${i}`).text('')
-    $(`#box${i}`).removeClass('playerX')
-    $(`#box${i}`).removeClass('playerO')
-  }
-  api.createGame()
-    .then(ui.createGameSuccess)
-    .catch(ui.creatGameFailure)
-}
-
-// On Click Game Update
-store.click = 0
-const onClickBox = function (event) {
-  let data
-  const currentIndex = $(event.target).data('index')
-  if ($(event.target).text() === '') {
-    if (store.click % 2 === 0) {
-      $(this).addClass('playerX')
-      $(event.target).text('X')
-      $('#feedback').html('Player O turn')
-      store.click++
-      data = {
-        'game': {
-          'cell': {
-            'index': currentIndex,
-            'value': 'x'
-          },
-          'over': store.game.over
-        }
-      }
-    } else {
-      $(event.target).text('O')
-      const currentIndex = $(event.target).data('index')
-      $(this).addClass('playerO')
-      $('#feedback').html('Player X turn')
-      store.click++
-      data = {
-        'game': {
-          'cell': {
-            'index': currentIndex,
-            'value': 'o'
-          },
-          'over': store.game.over
-        }
-      }
-    }
-  } else {
-    $('#feedback').html('Invalid Move')
-    this.target.event.off('click')
-  }
-  api.finalWinner()
-  api.updateGame(data)
-    .then(ui.updateGameSuccess)
-    .catch(ui.updateGameFailure)
-}
-
-// Getting Game records
-const ongetGame = function (event) {
+// Adding Book successful
+const onAddBook = function (event) {
+  console.log(event)
   event.preventDefault()
   const data = getFormFields(event.target)
-  api.getGame(data)
-    .then(ui.getGameSuccess)
-    .catch(ui.getGameFailure)
+  api.addBook(data)
+    .then(ui.addBookSuccess)
+    .catch(ui.addBookFailure)
+}
+
+// Showing One Book successful
+const onSearchBook = function (event) {
+  console.log('hello')
+  event.preventDefault()
+  const form = event.target
+  const bookData = getFormFields(form)
+  // const data = getFormFields(event.target)
+  api.searchBook(bookData)
+    .then(ui.searchBookSuccess)
+    .catch(ui.searchBookFailure)
+}
+
+// const onGetBooks = (event) => {
+//   console.log('hello')
+//   event.preventDefault()
+//   const form = event.target
+//   const bookData = getFormFields(form)
+//   api.getBooks(bookData)
+//     .then(ui.getBookSuccess)
+//     .catch(ui.getBookFailure)
+// }
+
+const onGetBooks = (event) => {
+  event.preventDefault()
+  api.getBooks()
+    .then(ui.getBooksSuccess)
+    .catch(ui.failure)
+}
+
+const onClearBooks = (event) => {
+  alert('clearBooks')
+  event.preventDefault()
+  ui.clearBooks()
+}
+
+// Delete Books
+const onDeleteBook = (event) => {
+  event.preventDefault()
+  const bookId = $(event.target).closest('section').data('id')
+  // confirm function is the global browser function.
+  if (confirm('Are you sure you want to delete this book?')) {
+    api.deleteBook(bookId)
+      .then(() => onGetBooks(event))
+      .catch(ui.failure)
+  }
+  ui.removeBook()
+}
+
+const addHandlers = () => {
+  $('#getGames').on('click', onGetBooks)
+  $('#clearBooksButton').on('click', onClearBooks)
+  $('.content').on('click', 'button', onDeleteBook)
+
+  // $('.content').on('click', 'button', console.log(event))
+  // this will listen to the big div of class content and anable the particular button.some
+  // target specific button in the class content.
 }
 
 module.exports = {
@@ -113,7 +111,10 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
-  onCreateGame,
-  ongetGame,
-  onClickBox
+  onAddBook,
+  onSearchBook,
+  onGetBooks,
+  onClearBooks,
+  onDeleteBook,
+  addHandlers
 }
