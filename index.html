@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Books Repository</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,59 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
-    </body>
+    <!-- User Book Page -->
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-md-12 box teal" id="playerX">
+          <h1 class="players">Books Repository</h1>
+        </div>
+      </div>
+    </div>
+    <br />
+    <!-- sign up form -->
+    <div class="userform">
+      <form id="sign-up-form">
+        <input required placeholder="Enter Email" name="credentials[email]" type="email" />
+        <input required placeholder="Password" name="credentials[password]" type="password"/>
+        <input required placeholder="Confirm Password" name="credentials[password_confirmation]" type="password"/>
+        <button type="submit">Sign Up</button>
+      </form>
+      <br />
+
+      <!-- sign in -->
+      <form id="sign-in-form">
+        <input required placeholder="Enter Email" name="credentials[email]" type="email" />
+        <input required placeholder="Password" name="credentials[password]" type="password"/>
+        <button type="submit">Sign In</button>
+      </form>
+      <br />
+
+      <!-- Change password -->
+      <form id="change-password-form">
+        <input required placeholder="Old Password" name="passwords[old]" type="password"/>
+        <input required placeholder="New Password" name="passwords[new]" type="password"/>
+        <button type="submit">Submit</button>
+      </form>
+      <br />
+
+      <!-- Game Control Buttons-->
+      <div class="actionbutton">
+        <button id="sign-out-button">Sign Out</button>
+        <button id="newGame">New Game</button>
+        <button id="getGames">Get Games</button>
+      </div>
+    </div>
+    <!-- Feedback -->
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-md-12 box teal" id="feedback">
+          <h2 class="feedback">Welcom</h2>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+      <div class="copyrights">GA WDI Project 2, By: Tenzin</div>
+  </body>
 </html>
