@@ -41,129 +41,91 @@ const signOut = function () {
 }
 
 // Create Game api call
-const createGame = function (userData) {
-  return $.ajax({
-    url: config.apiUrl + '/games',
-    headers: {
-      Authorization: `Token token=${store.user.token}`
-    },
-    method: 'POST'
-  })
-}
+// const createGame = function (userData) {
+//   return $.ajax({
+//     url: config.apiUrl + '/games',
+//     headers: {
+//       Authorization: `Token token=${store.user.token}`
+//     },
+//     method: 'POST'
+//   })
+// }
 
 // Getting Game from api for user
-const getGame = function (userData) {
-  return $.ajax({
-    url: config.apiUrl + '/games/',
-    headers: {
-      Authorization: `Token token=${store.user.token}`
-    },
-    method: 'GET',
-    data: userData
-  })
-}
+// const getGame = function (userData) {
+//   return $.ajax({
+//     url: config.apiUrl + '/games/',
+//     headers: {
+//       Authorization: `Token token=${store.user.token}`
+//     },
+//     method: 'GET',
+//     data: userData
+//   })
+// }
 // Update Game api
-const updateGame = function (clickData) {
+// const updateGame = function (clickData) {
+//   return $.ajax({
+//     url: config.apiUrl + `/games/${store.game.id}`,
+//     headers: {
+//       Authorization: `Token token=${store.user.token}`
+//     },
+//     method: 'PATCH',
+//     data: clickData
+//   })
+// }
+
+// Adding Book to api
+const addBook = function (bookData) {
   return $.ajax({
-    url: config.apiUrl + `/games/${store.game.id}`,
+    url: config.apiUrl + '/books',
     headers: {
       Authorization: `Token token=${store.user.token}`
     },
-    method: 'PATCH',
-    data: clickData
+    method: 'POST',
+    data: bookData
   })
 }
 
-// Final Winner Check
-const finalWinner = function () {
-  store.counter += 1
-  if (store.counter >= 9) {
-    $('#feedback').html('Tie Game, try again')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  }
-  if ($('#box1').hasClass('playerX') && $('#box2').hasClass('playerX') && $('#box3').hasClass('playerX')) {
-    $('#feedback').html('Player X is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box1').hasClass('playerO') && $('#box2').hasClass('playerO') && $('#box3').hasClass('playerO')) {
-    $('#feedback').html('Player O is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box4').hasClass('playerX') && $('#box5').hasClass('playerX') && $('#box6').hasClass('playerX')) {
-    $('#feedback').html('Player X is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box4').hasClass('playerO') && $('#box5').hasClass('playerO') && $('#box6').hasClass('playerO')) {
-    $('#feedback').html('Player O is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box7').hasClass('playerX') && $('#box8').hasClass('playerX') && $('#box9').hasClass('playerX')) {
-    $('#feedback').html('Player X is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box7').hasClass('playerO') && $('#box8').hasClass('playerO') && $('#box9').hasClass('playerO')) {
-    $('#feedback').html('Player O is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box1').hasClass('playerX') && $('#box4').hasClass('playerX') && $('#box7').hasClass('playerX')) {
-    $('#feedback').html('Player X is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box1').hasClass('playerO') && $('#box4').hasClass('playerO') && $('#box7').hasClass('playerO')) {
-    $('#feedback').html('Player O is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box2').hasClass('playerX') && $('#box5').hasClass('playerX') && $('#box8').hasClass('playerX')) {
-    $('#feedback').html('Player X is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box2').hasClass('playerO') && $('#box5').hasClass('playerO') && $('#box8').hasClass('playerO')) {
-    $('#feedback').html('Player O is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box3').hasClass('playerX') && $('#box6').hasClass('playerX') && $('#box9').hasClass('playerX')) {
-    $('#feedback').html('Player X is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box3').hasClass('playerO') && $('#box6').hasClass('playerO') && $('#box9').hasClass('playerO')) {
-    $('#feedback').html('Player O is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box1').hasClass('playerX') && $('#box5').hasClass('playerX') && $('#box9').hasClass('playerX')) {
-    $('#feedback').html('Player X is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box1').hasClass('playerO') && $('#box5').hasClass('playerO') && $('#box9').hasClass('playerO')) {
-    $('#feedback').html('Player O is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box3').hasClass('playerX') && $('#box5').hasClass('playerX') && $('#box7').hasClass('playerX')) {
-    $('#feedback').html('Player X is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  } else if ($('#box3').hasClass('playerO') && $('#box5').hasClass('playerO') && $('#box7').hasClass('playerO')) {
-    $('#feedback').html('Player O is winner')
-    $('#loadGame').hide()
-    store.counter = 0
-    store.game.over = true
-  }
+// Showing 1 book from api for user
+const searchBook = function (bookId) {
+  return $.ajax({
+    url: config.apiUrl + `/books/${store.book.id}`,
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    method: 'GET'
+  })
+}
+
+// Showing All books from api for user
+// const getBooks = function (bookId) {
+//   return $.ajax({
+//     url: config.apiUrl + '/books',
+//     headers: {
+//       Authorization: `Token token=${store.user.token}`
+//     },
+//     method: 'GET'
+//   })
+// }
+
+// const getBooks = function (bookId) {
+//   console.log('api')
+//   return $.ajax({
+//     url: config.apiUrl + '/books'
+//   })
+// }
+
+const getBooks = function () {
+  return $.ajax({
+    url: config.apiUrl + '/books'
+  })
+}
+
+const deleteBook = function (bookId) {
+  return $.ajax({
+    url: config.apiUrl + '/books/' + bookId,
+    method: 'DELETE'
+  })
 }
 
 module.exports = {
@@ -171,8 +133,8 @@ module.exports = {
   signIn,
   onChangePassword,
   signOut,
-  updateGame,
-  getGame,
-  createGame,
-  finalWinner
+  addBook,
+  searchBook,
+  getBooks,
+  deleteBook
 }
