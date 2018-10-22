@@ -1,0 +1,13 @@
+{{#each books as |book|}}
+  <!--{{log book}}  it will console log what is information in book -->
+  <!-- {{> partial}} -->
+  <div>
+    <h3 data-title="{{book.title}}"> <small>Title: {{book.title}}</small></h3>
+    <section data-title="{{book.title}}">
+    <!-- Update Book title -->
+    <form id="update-book-form">
+      <input id="title" required placeholder="New title" name="book[title]" type="text"/>
+      <button type="submit" value="Update" class="btn btn-default">Update</button>
+    </form>
+  </div>
+{{/each}}

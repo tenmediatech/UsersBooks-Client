@@ -40,40 +40,6 @@ const signOut = function () {
   })
 }
 
-// Create Game api call
-// const createGame = function (userData) {
-//   return $.ajax({
-//     url: config.apiUrl + '/games',
-//     headers: {
-//       Authorization: `Token token=${store.user.token}`
-//     },
-//     method: 'POST'
-//   })
-// }
-
-// Getting Game from api for user
-// const getGame = function (userData) {
-//   return $.ajax({
-//     url: config.apiUrl + '/games/',
-//     headers: {
-//       Authorization: `Token token=${store.user.token}`
-//     },
-//     method: 'GET',
-//     data: userData
-//   })
-// }
-// Update Game api
-// const updateGame = function (clickData) {
-//   return $.ajax({
-//     url: config.apiUrl + `/games/${store.game.id}`,
-//     headers: {
-//       Authorization: `Token token=${store.user.token}`
-//     },
-//     method: 'PATCH',
-//     data: clickData
-//   })
-// }
-
 // Adding Book to api
 const addBook = function (bookData) {
   return $.ajax({
@@ -86,45 +52,46 @@ const addBook = function (bookData) {
   })
 }
 
-// Showing 1 book from api for user
-const searchBook = function (bookId) {
-  return $.ajax({
-    url: config.apiUrl + `/books/${store.book.id}`,
-    headers: {
-      Authorization: `Token token=${store.user.token}`
-    },
-    method: 'GET'
-  })
-}
-
-// Showing All books from api for user
-// const getBooks = function (bookId) {
-//   return $.ajax({
-//     url: config.apiUrl + '/books',
-//     headers: {
-//       Authorization: `Token token=${store.user.token}`
-//     },
-//     method: 'GET'
-//   })
-// }
-
-// const getBooks = function (bookId) {
-//   console.log('api')
-//   return $.ajax({
-//     url: config.apiUrl + '/books'
-//   })
-// }
-
 const getBooks = function () {
   return $.ajax({
     url: config.apiUrl + '/books'
   })
 }
 
+// Delete Book
 const deleteBook = function (bookId) {
   return $.ajax({
     url: config.apiUrl + '/books/' + bookId,
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
     method: 'DELETE'
+  })
+}
+
+// Update Book
+const updateBook = function (bookData) {
+  // const id = bookData.id
+  return $.ajax({
+    url: config.apiUrl + `/books/${bookData.book.id}`,
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    method: 'PATCH',
+    data: bookData
+  })
+}
+
+// Showing 1 book from api for user
+const searchBook = function (bookData) {
+  // console.log(bookId)
+  return $.ajax({
+    url: config.apiUrl + `/books/${bookData.book.id}`,
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    method: 'GET',
+    data: bookData
   })
 }
 
@@ -136,5 +103,6 @@ module.exports = {
   addBook,
   searchBook,
   getBooks,
-  deleteBook
+  deleteBook,
+  updateBook
 }

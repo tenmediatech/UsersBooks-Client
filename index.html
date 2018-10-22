@@ -28,7 +28,7 @@
         <input required placeholder="Enter Email" name="credentials[email]" type="email" />
         <input required placeholder="Password" name="credentials[password]" type="password"/>
         <input required placeholder="Confirm Password" name="credentials[password_confirmation]" type="password"/>
-        <button type="submit">Sign Up</button>
+        <button type="submit" class="btn btn-default">Sign Up</button>
       </form>
       <br />
 
@@ -36,63 +36,55 @@
       <form id="sign-in-form">
         <input required placeholder="Enter Email" name="credentials[email]" type="email" />
         <input required placeholder="Password" name="credentials[password]" type="password"/>
-        <button type="submit">Sign In</button>
+        <button type="submit" class="btn btn-default">Sign In</button>
       </form>
 
       <!-- Change password -->
       <form id="change-password-form">
         <input required placeholder="Old Password" name="passwords[old]" type="password"/>
         <input required placeholder="New Password" name="passwords[new]" type="password"/>
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-default">Change Password</button>
       </form>
       <br />
-
-      <!-- Game Control Buttons-->
-      <!-- <div class="actionbutton">
-      </div> -->
-      <!-- <br /> -->
-
     </div>
-
-    <section class="container-fluid">
-      <nav>
-        <button id="getBooks" class="btn btn-default">List Books</button>
-        <button id="clearBooksButton" class="btn btn-default">Clear Books</button>
-        <section id="book-section">
-          <h4>Books Section</h4><hr>
-
-          <!-- Adding Book -->
-          <form id="add-book-form">
-            <input id="title" required placeholder="Type book title" name="book[title]" type="text"/>
-            <button type="submit">Add Book</button>
+    <section id="book-section">
+      <section class="container-fluid">
+        <nav>
+          <button id="getBooks" class="btn btn-default">List Books</button>
+          <button id="clearBooksButton" class="btn btn-default">Clear Books</button>
+        <!-- Adding Book -->
+        <form id="add-book-form">
+          <input id="title" required placeholder="Type book title" name="book[title]" type="text"/>
+          <button type="submit" class="btn btn-default">Add Book</button>
+        </form>
+        <!-- Search Book -->
+        <form id="search-book-form">
+          <input id="search" required placeholder="Type book id" name="book[id]" type="text"/>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
+        <!-- Update Book title -->
+          <form id="updateBook">
+            <input required placeholder="id" name="book[id]" type="text"/>
+            <input required placeholder="New title" name="book[title]" type="text"/>
+            <button type="submit" value="Update" class="btn btn-default">Update</button>
           </form>
-
-          <!-- Search Book -->
-          <form id="search-book-form">
-            <input id="search" required placeholder="Type title to search" name="book[title]" type="text"/>
-            <button type="submit">Search</button>
-          </form>
-          <!-- <button id="getGames">List All Books</button> -->
+        <!-- Sign Out -->
+          <button id="sign-out-button" class="btn btn-default">Sign Out</button>
+        </nav>
       </section>
-        <!-- <button id="clearBooksButton" class="btn btn-default">Clear Books!</button> -->
-      </nav>
-      <main>
-        <div id="content" class="content"></div>
-      </main>
-      <button id="sign-out-button">Sign Out</button>
-  </section>
-
-    <br />
+    </section>
+    <main>
+      <div id="content" class="content"></div>
+      <!-- <div id="content-update" class="content-update"></div> -->
+    </main>
     <!-- Feedback -->
     <div class="container">
       <div class="row">
         <div class="col-6 col-md-12 box teal" id="feedback">
-          <h2 class="feedback">Welcom</h2>
+          <h2 class="feedback">Welcome</h2>
         </div>
       </div>
     </div>
-    <br />
-    <br />
-      <div class="copyrights">GA WDI Project 2, By: Tenzin</div>
+    <footer class="copyrights">GA WDI Project 2, By: Tenzin</footer>
   </body>
 </html>

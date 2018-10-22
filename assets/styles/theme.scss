@@ -4,12 +4,16 @@ body {
 }
 
 div {
-  border: $font-color 2px solid;
-  padding: 30px;
+  // border: $font-color 1px solid;
+  padding: 10px;
   text-align: center;
 }
 
-button {
-  background-color: $secondary-background;
-  color: $font-color;
+// button {
+//   background-color: $secondary-background;
+//   color: $font-color;
+// }
+
+nav {
+  text-align: center;
 }

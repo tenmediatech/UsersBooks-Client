@@ -14,7 +14,7 @@ const signUpFailure = function () {
 }
 
 const signInSuccess = function (response) {
-  $('#feedback').html('User Signed In, Start Game')
+  $('#feedback').html('Sign in successful')
   $('#sign-in-form').trigger('reset')
   $('#change-password-form').show()
   $('#book-section').show()
@@ -22,6 +22,7 @@ const signInSuccess = function (response) {
   // $('#create-book').show()
   $('.actionbutton').show()
   $('#sign-up-form').hide()
+  $('#content').show()
   store.user = response.user
   $('#sign-in-form').hide()
   $('#sign-out-button').removeClass('hidden')
@@ -53,6 +54,7 @@ const signOutSuccess = function () {
   $('#sign-up-form').show()
   $('#sign-in-form').show()
   $('#book-section').hide()
+  $('#content').hide()
 }
 
 // Hide the game board on loading page
@@ -66,21 +68,6 @@ $(document).ready(function () {
   $('.actionbutton').hide()
 })
 
-const createGameSuccess = function (response) {
-  $('#loadGame').show()
-  $('#feedback').html('Start your game')
-  store.counter = 0
-  store.game = response.game
-}
-
-const getGameSuccess = function (response) {
-  $('#feedback').html(`You have ${response.games.length} games`)
-}
-
-const updateGameSuccess = function (response) {
-  store.game = response.game
-}
-
 // Adding book success or failure
 const addBookSuccess = function (response) {
   $('#feedback').html('Book added successful')
@@ -92,32 +79,23 @@ const addBookFailure = function () {
   $('#sign-up-form').trigger('reset')
 }
 
-// Searching book success or failure
-const searchBookSuccess = function (response) {
-  store.book = response.book
-  $('#feedback').html(`Book found with title: ${store.book.title}`)
-  $('#sign-up-form').trigger('reset')
-}
-const searchBookFailure = function () {
-  $('#feedback').html('Something went wrong, please try again')
-  $('#sign-up-form').trigger('reset')
-}
-
-// Getting books success or failure
-// const getBookSuccess = function (response) {
-//   store.book = response.book
-//   $('#feedback').html(`List of all the books: ${store.book.title}`)
-//   $('#sign-up-form').trigger('reset')
-// }
-
 const getBooksSuccess = (data) => {
-  console.log(data)
   const showBooksHtml = showBooksTemplate({ books: data.books })
   // .html will replace the entire entry on the page for the class content.
   $('.content').html(showBooksHtml)
 }
 
 const getBookFailure = function () {
+  $('#feedback').html('Something went wrong, please try again')
+  $('#sign-up-form').trigger('reset')
+}
+
+// Searching books
+const searchBooksSuccess = (response) => {
+  store.book = response.book
+  $('.content').html(`Book ${store.book.title} is found`)
+}
+const searchBookFailure = function () {
   $('#feedback').html('Something went wrong, please try again')
   $('#sign-up-form').trigger('reset')
 }
@@ -138,14 +116,10 @@ module.exports = {
   changeedPassword,
   changeedPasswordFailure,
   signOutSuccess,
-  createGameSuccess,
-  getGameSuccess,
-  updateGameSuccess,
   addBookSuccess,
   addBookFailure,
-  searchBookSuccess,
+  searchBooksSuccess,
   searchBookFailure,
-  // getBookSuccess,
   getBooksSuccess,
   getBookFailure,
   clearBooks,

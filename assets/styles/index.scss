@@ -1,9 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
-@import '~bootstrap/scss/bootstrap';
 @import 'color';
 @import 'theme';
 
-$background-color: white;
 $font-color: #dfdfdf;
 $white: #fff;
 $grey: rgb(128, 128, 128);
@@ -12,7 +10,10 @@ $black: #000;
 $player: #edf77b;
 
 body {
-  background-color: $background-color;
+  background-image: url('./assets/images/books-back.png');
+  background-size: auto;
+  background-attachment: fixed;
+  background-blend-mode: lighten;
   align-items: center;
 }
 
@@ -21,15 +22,11 @@ body {
 }
 
 button {
+    color: $font-color;
     background-color: #2f4154;
-    border: none;
-    color: white;
-    padding: 5px 12px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 4px 2px;
+    font-size: 12px;
+    margin: 8px 5px;
     cursor: pointer;
 }
 
@@ -73,12 +70,16 @@ button {
 
 .players {
   font-family: fantasy;
-  color: $player;
+  // color: $player;
   text-align: center;
+  font-size: 35px;
+  padding-top: 10px;
 }
 
 .feedback {
-  font-size: 24px;
+  font-size: 30px;
+  font-family: fantasy;
+  padding-top: 14px;
 }
 
 .playerX {
@@ -101,7 +102,10 @@ button {
 
 .copyrights {
   text-align: center;
-  color: gray;
+  color: #ece1d0;
   font-size: 15px;
-  font-family: fantasy;
+}
+
+nav {
+  text-align: center;
 }

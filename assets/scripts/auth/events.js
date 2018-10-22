@@ -50,25 +50,12 @@ const onAddBook = function (event) {
 
 // Showing One Book successful
 const onSearchBook = function (event) {
-  console.log('hello')
   event.preventDefault()
-  const form = event.target
-  const bookData = getFormFields(form)
-  // const data = getFormFields(event.target)
-  api.searchBook(bookData)
-    .then(ui.searchBookSuccess)
-    .catch(ui.searchBookFailure)
+  const bookdata = getFormFields(event.target)
+  api.searchBook(bookdata)
+    .then(ui.searchBooksSuccess)
+    .catch(ui.failure)
 }
-
-// const onGetBooks = (event) => {
-//   console.log('hello')
-//   event.preventDefault()
-//   const form = event.target
-//   const bookData = getFormFields(form)
-//   api.getBooks(bookData)
-//     .then(ui.getBookSuccess)
-//     .catch(ui.getBookFailure)
-// }
 
 const onGetBooks = (event) => {
   event.preventDefault()
@@ -92,17 +79,25 @@ const onDeleteBook = (event) => {
       .then(() => onGetBooks(event))
       .catch(ui.failure)
   }
-  ui.removeBook()
+  // ui.removeBook()
+}
+
+// Update Book title
+const onUpdateBook = (event) => {
+  event.preventDefault()
+  console.log(event)
+  const bookData = getFormFields(event.target)
+  // confirm function is the global browser function.
+  if (confirm('Are you sure you want to update this book?')) {
+    api.updateBook(bookData)
+      .then(ui.updateBooksSuccess)
+      .catch(ui.failure)
+  }
+// ui.removeBook()
 }
 
 const addHandlers = () => {
-  $('#getGames').on('click', onGetBooks)
-  $('#clearBooksButton').on('click', onClearBooks)
   $('.content').on('click', 'button', onDeleteBook)
-
-  // $('.content').on('click', 'button', console.log(event))
-  // this will listen to the big div of class content and anable the particular button.some
-  // target specific button in the class content.
 }
 
 module.exports = {
@@ -115,5 +110,6 @@ module.exports = {
   onGetBooks,
   onClearBooks,
   onDeleteBook,
+  onUpdateBook,
   addHandlers
 }

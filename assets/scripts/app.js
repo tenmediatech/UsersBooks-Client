@@ -18,13 +18,10 @@ $(() => {
   $('#change-password-form').on('submit', authEvents.onChangePassword)
   $('#sign-out-button').on('click', authEvents.onSignOut)
 
-  // Create game event listeners
-  $('#newGame').on('click', authEvents.onCreateGame) // calls events.js
-  $('#getGames').on('click', authEvents.ongetGame) // calls events.js
-
   // Add Book event listeners
-  $('#add-book-form').on('submit', authEvents.onAddBook)
-  $('#search-book-form').on('submit', authEvents.onSearchBook)
   $('#getBooks').on('click', authEvents.onGetBooks)
   $('#clearBooksButton').on('click', authEvents.onClearBooks)
+  $('#add-book-form').on('submit', authEvents.onAddBook)
+  $('#search-book-form').on('submit', authEvents.onSearchBook)
+  $('#updateBook').on('submit', authEvents.onUpdateBook)
 })
