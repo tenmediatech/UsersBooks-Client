@@ -54,14 +54,14 @@ const onSearchBook = function (event) {
   const bookdata = getFormFields(event.target)
   api.searchBook(bookdata)
     .then(ui.searchBooksSuccess)
-    .catch(ui.failure)
+    .catch(ui.searchBookFailure)
 }
 
 const onGetBooks = (event) => {
   event.preventDefault()
   api.getBooks()
     .then(ui.getBooksSuccess)
-    .catch(ui.failure)
+    .catch(ui.getBookFailure)
 }
 
 const onClearBooks = (event) => {
@@ -77,7 +77,7 @@ const onDeleteBook = (event) => {
   if (confirm('Are you sure you want to delete this book?')) {
     api.deleteBook(bookId)
       .then(() => onGetBooks(event))
-      .catch(ui.failure)
+      .catch(ui.deleteBookFailure)
   }
   // ui.removeBook()
 }
@@ -91,7 +91,7 @@ const onUpdateBook = (event) => {
   if (confirm('Are you sure you want to update this book?')) {
     api.updateBook(bookData)
       .then(ui.updateBooksSuccess)
-      .catch(ui.failure)
+      .catch(ui.updateBooksFailure)
   }
 // ui.removeBook()
 }

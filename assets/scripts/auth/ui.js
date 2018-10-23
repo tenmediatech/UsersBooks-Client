@@ -82,6 +82,11 @@ const addBookFailure = function () {
   $('#sign-up-form').trigger('reset')
 }
 
+const deleteBookFailure = function () {
+  $('#feedback').html('Something went wrong, please try again')
+  $('#sign-up-form').trigger('reset')
+}
+
 const getBooksSuccess = (data) => {
   const showBooksHtml = showBooksTemplate({ books: data.books })
   // .html will replace the entire entry on the page for the class content.
@@ -99,6 +104,17 @@ const searchBooksSuccess = (response) => {
   $('.content').html(`Book ${store.book.title} is found`)
 }
 const searchBookFailure = function () {
+  $('#feedback').html('Something went wrong, please try again')
+  $('#sign-up-form').trigger('reset')
+}
+
+// Updating books
+const updateBooksSuccess = function (response) {
+  $('#feedback').html('Book Updated successful')
+  $('#sign-up-form').trigger('reset')
+  store.book = response.book
+}
+const updateBooksFailure = function () {
   $('#feedback').html('Something went wrong, please try again')
   $('#sign-up-form').trigger('reset')
 }
@@ -121,10 +137,13 @@ module.exports = {
   signOutSuccess,
   addBookSuccess,
   addBookFailure,
+  deleteBookFailure,
   searchBooksSuccess,
   searchBookFailure,
   getBooksSuccess,
   getBookFailure,
+  updateBooksSuccess,
+  updateBooksFailure,
   clearBooks,
   failure
 }
