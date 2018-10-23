@@ -1,6 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'color';
 @import 'theme';
+@import 'newstyle.scss';
 
 $font-color: #dfdfdf;
 $white: #fff;
@@ -10,23 +11,23 @@ $black: #000;
 $player: #edf77b;
 
 body {
-  background-image: url('./assets/images/books-back.png');
+  background-image: url('./assets/images/thebooksback.png');
   background-size: auto;
   background-attachment: fixed;
-  background-blend-mode: lighten;
+  background-blend-mode: difference;
   align-items: center;
 }
 
 .userform {
-  text-align: center;
+  text-align: left;
 }
 
 button {
     color: $font-color;
     background-color: #2f4154;
     text-align: center;
-    font-size: 12px;
-    margin: 8px 5px;
+    font-size: 25px;
+    margin: 8px 8px;
     cursor: pointer;
 }
 
@@ -68,7 +69,7 @@ button {
     color: red;
 }
 
-.players {
+.title1 {
   font-family: fantasy;
   // color: $player;
   text-align: center;
@@ -77,8 +78,8 @@ button {
 }
 
 .feedback {
-  font-size: 30px;
-  font-family: fantasy;
+  font-size: 20px;
+  font-family: inherit;
   padding-top: 14px;
 }
 
@@ -104,8 +105,24 @@ button {
   text-align: center;
   color: #ece1d0;
   font-size: 15px;
+
 }
 
 nav {
+  text-align: left;
+  margin-left: 35%;
+}
+
+ul li {
+  list-style: none;
+}
+
+.bookrecords {
+  font-size: 20px;
+  style: animation;
+  border: 1px solid $white;
   text-align: center;
+  margin-left: 35%;
+  width: 30%;
+  background-color: rgba(0,0,0,0.4);
 }

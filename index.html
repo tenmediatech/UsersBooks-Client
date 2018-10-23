@@ -17,41 +17,78 @@
     <div class="container">
       <div class="row">
         <div class="col-6 col-md-12 box teal" id="playerX">
-          <h1 class="players">Books Repository</h1>
+          <h1 class="title1">Books Repository</h1>
         </div>
       </div>
     </div>
-    <br />
-    <!-- sign up form -->
     <div class="userform">
-      <form id="sign-up-form">
-        <input required placeholder="Enter Email" name="credentials[email]" type="email" />
-        <input required placeholder="Password" name="credentials[password]" type="password"/>
-        <input required placeholder="Confirm Password" name="credentials[password_confirmation]" type="password"/>
-        <button type="submit" class="btn btn-default">Sign Up</button>
-      </form>
-      <br />
 
-      <!-- sign in -->
-      <form id="sign-in-form">
-        <input required placeholder="Enter Email" name="credentials[email]" type="email" />
-        <input required placeholder="Password" name="credentials[password]" type="password"/>
-        <button type="submit" class="btn btn-default">Sign In</button>
-      </form>
+      <!-- New UI -->
+      <section class="newui">
+      <div id="loadAuth">
+      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-default">Login</button>
+      <button onclick="document.getElementById('id02').style.display='block'" class="btn btn-default">Sign Up</button>
+      </div>
 
-      <!-- Change password -->
-      <form id="change-password-form">
-        <input required placeholder="Old Password" name="passwords[old]" type="password"/>
-        <input required placeholder="New Password" name="passwords[new]" type="password"/>
-        <button type="submit" class="btn btn-default">Change Password</button>
-      </form>
-      <br />
+        <div id="id01" class="modal">
+        <form id="sign-in-form" class="modal-content animate">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="http://www.eatlogos.com/education_logos/png/vector_colourful_book_logo.png" alt="Avatar" class="avatar">
+          </div>
+          <div class="container">
+            <input required placeholder="Enter Email" name="credentials[email]" type="text" >
+            <input required placeholder="Enter Password" name="credentials[password]" type="password"/>
+            <button type="submit" class="btn btn-default">Login</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="id02" class="modal">
+        <form id="sign-up-form" class="modal-content animate">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="http://www.eatlogos.com/education_logos/png/vector_colourful_book_logo.png" alt="Avatar" class="avatar">
+          </div>
+          <div class="container">
+            <input required placeholder="Enter Email" name="credentials[email]" type="text" >
+            <input required placeholder="Enter Password" name="credentials[password]" type="password"/>
+            <input required placeholder="Confirm Password" name="credentials[password_confirmation]" type="password">
+            <button type="submit" class="btn btn-default">Sign Up</button>
+          </div>
+        </form>
+        </div>
+
+        <div id="id03" class="modal">
+          <form id="change-password-form" class="modal-content animate">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <img src="http://www.eatlogos.com/education_logos/png/vector_colourful_book_logo.png" alt="Avatar" class="avatar">
+            </div>
+            <div class="container">
+                <input required placeholder="Old Password" name="passwords[old]" type="password"/>
+                <input required placeholder="New Password" name="passwords[new]" type="password"/>
+                <button type="submit" class="btn btn-default">Change Password</button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <!-- End of New UI -->
+
     </div>
     <section id="book-section">
       <section class="container-fluid">
         <nav>
-          <button id="getBooks" class="btn btn-default">List Books</button>
-          <button id="clearBooksButton" class="btn btn-default">Clear Books</button>
+          <!-- Change password -->
+          <!-- <form id="change-password-form">
+            <input required placeholder="Old Password" name="passwords[old]" type="password"/>
+            <input required placeholder="New Password" name="passwords[new]" type="password"/>
+            <button type="submit" class="btn btn-default">Change Password</button>
+          </form> -->
+          <button id="getBooks" class="btn btn-info">List Books</button>
+          <button id="clearBooksButton" class="btn btn-info">Clear Books</button>
+          <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-default">Change Password</button>
+          <button id="sign-out-button" class="btn btn-success">Sign Out</button>
         <!-- Adding Book -->
         <form id="add-book-form">
           <input id="title" required placeholder="Type book title" name="book[title]" type="text"/>
@@ -68,8 +105,6 @@
             <input required placeholder="New title" name="book[title]" type="text"/>
             <button type="submit" value="Update" class="btn btn-default">Update</button>
           </form>
-        <!-- Sign Out -->
-          <button id="sign-out-button" class="btn btn-default">Sign Out</button>
         </nav>
       </section>
     </section>
@@ -81,10 +116,42 @@
     <div class="container">
       <div class="row">
         <div class="col-6 col-md-12 box teal" id="feedback">
-          <h2 class="feedback">Welcome</h2>
+          <h2 class="feedback">GA WDI Project II, By: 10</h2>
         </div>
       </div>
     </div>
-    <footer class="copyrights">GA WDI Project 2, By: Tenzin</footer>
-  </body>
+    <!-- <footer class="copyrights">GA WDI Project II, By: 10</footer> -->
+
+<!-- Script to run the Authentication -->
+<script>
+// 	S	ign in
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+// Sign up
+var modal = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+// Change Password
+var modal = document.getElementById('id03');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
 </html>

@@ -1,10 +1,15 @@
+<div class="bookrecords">
+<ul>
 {{#each books as |book|}}
   <!--{{log book}}  it will console log what is information in book -->
   <!-- {{> partial}} -->
   <div>
-    <h3 data-id="{{book.id}}"> <small>Book ID: {{book.id}}</small> | <small>Title: {{book.title}}</small></h3>
+    <li data-id="{{book.id}}"> <small>Book ID: {{book.id}}</small> | <strong>Title: {{book.title}}</strong></li>
+    <!-- <h3 data-id="{{book.id}}"> <small>Book ID: {{book.id}}</small> | <small>Title: {{book.title}}</small></h3> -->
     <section data-id="{{book.id}}">
       <button type="submit" value="Remove" class="btn btn-default">Remove</button>
     </section>
   </div>
 {{/each}}
+</ul>
+</div>

@@ -6,6 +6,7 @@ const showBooksTemplate = require('../templates/book-listing.handlebars')
 const signUpSuccess = function (data) {
   $('#feedback').html('Sign up successful')
   $('#sign-up-form').trigger('reset')
+  $('#id02').css('display', 'none')
 }
 
 const signUpFailure = function () {
@@ -18,13 +19,12 @@ const signInSuccess = function (response) {
   $('#sign-in-form').trigger('reset')
   $('#change-password-form').show()
   $('#book-section').show()
-  // $('#search-book').show()
-  // $('#create-book').show()
   $('.actionbutton').show()
   $('#sign-up-form').hide()
   $('#content').show()
   store.user = response.user
-  $('#sign-in-form').hide()
+  $('#loadAuth').hide()
+  $('#id01').css('display', 'none')
   $('#sign-out-button').removeClass('hidden')
   $('#create-example-form').removeClass('hidden')
   $('#container').html('Game Board').hide()
@@ -38,6 +38,7 @@ const signInFailure = function () {
 const changeedPassword = function () {
   $('#feedback').html('Password Changed successful')
   $('#change-password-form').trigger('reset')
+  $('#id03').css('display', 'none')
 }
 
 const changeedPasswordFailure = function () {
@@ -51,10 +52,12 @@ const signOutSuccess = function () {
   $('#change-password-form').trigger('reset')
   $('#change-password-form').hide()
   $('.actionbutton').hide()
-  $('#sign-up-form').show()
+  $('#loadAuth').show()
   $('#sign-in-form').show()
+  $('#sign-up-form').show()
   $('#book-section').hide()
   $('#content').hide()
+  $('#feedback').html('Sign Out successful')
 }
 
 // Hide the game board on loading page
