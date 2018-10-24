@@ -74,12 +74,12 @@ $(document).ready(function () {
 // Adding book success or failure
 const addBookSuccess = function (response) {
   $('#feedback').html('Book added successful')
-  $('#sign-up-form').trigger('reset')
+  $('#add-book-form').trigger('reset')
   store.book = response.book
 }
 const addBookFailure = function () {
   $('#feedback').html('Something went wrong, please try again')
-  $('#sign-up-form').trigger('reset')
+  $('#add-book-form').trigger('reset')
 }
 
 const deleteBookFailure = function () {
@@ -95,28 +95,29 @@ const getBooksSuccess = (data) => {
 
 const getBookFailure = function () {
   $('#feedback').html('Something went wrong, please try again')
-  $('#sign-up-form').trigger('reset')
+  $('#getBooks').trigger('reset')
 }
 
 // Searching books
 const searchBooksSuccess = (response) => {
   store.book = response.book
   $('.content').html(`Book ${store.book.title} is found`)
+  $('#search-book-form').trigger('reset')
 }
 const searchBookFailure = function () {
   $('#feedback').html('Something went wrong, please try again')
-  $('#sign-up-form').trigger('reset')
+  $('#search-book-form').trigger('reset')
 }
 
 // Updating books
 const updateBooksSuccess = function (response) {
   $('#feedback').html('Book Updated successful')
-  $('#sign-up-form').trigger('reset')
+  $('#updateBook').trigger('reset')
   store.book = response.book
 }
 const updateBooksFailure = function () {
   $('#feedback').html('Something went wrong, please try again')
-  $('#sign-up-form').trigger('reset')
+  $('#updateBook').trigger('reset')
 }
 
 const clearBooks = () => {
