@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Books Repository</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+    <!-- User Book Page -->
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-md-12 box teal" id="playerX">
+          <h1 class="title1">Books Repository</h1>
+        </div>
+      </div>
+    </div>
+    <div class="userform">
+
+      <!-- New UI -->
+      <section class="newui">
+      <div id="loadAuth">
+      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-default">Login</button>
+      <button onclick="document.getElementById('id02').style.display='block'" class="btn btn-default">Sign Up</button>
+      </div>
+
+        <div id="id01" class="modal">
+        <form id="sign-in-form" class="modal-content animate">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="https://i.imgur.com/9TQm5Cu.png" alt="Avatar" class="avatar">
+          </div>
+          <div class="container">
+            <input required placeholder="Enter Email" name="credentials[email]" type="text" >
+            <input required placeholder="Enter Password" name="credentials[password]" type="password"/>
+            <button type="submit" class="btn btn-default">Login</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="id02" class="modal">
+        <form id="sign-up-form" class="modal-content animate">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="https://i.imgur.com/9TQm5Cu.png" alt="Avatar" class="avatar">
+          </div>
+          <div class="container">
+            <input required placeholder="Enter Email" name="credentials[email]" type="text" >
+            <input required placeholder="Enter Password" name="credentials[password]" type="password"/>
+            <input required placeholder="Confirm Password" name="credentials[password_confirmation]" type="password">
+            <button type="submit" class="btn btn-default">Sign Up</button>
+          </div>
+        </form>
+        </div>
+
+        <div id="id03" class="modal">
+          <form id="change-password-form" class="modal-content animate">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <img src="https://i.imgur.com/9TQm5Cu.png" alt="Avatar" class="avatar">
+            </div>
+            <div class="container">
+                <input required placeholder="Old Password" name="passwords[old]" type="password"/>
+                <input required placeholder="New Password" name="passwords[new]" type="password"/>
+                <button type="submit" class="btn btn-default">Change Password</button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <!-- End of New UI -->
+
+    </div>
+    <section id="book-section">
+      <section class="container-fluid">
+        <nav>
+          <!-- Change password -->
+          <!-- <form id="change-password-form">
+            <input required placeholder="Old Password" name="passwords[old]" type="password"/>
+            <input required placeholder="New Password" name="passwords[new]" type="password"/>
+            <button type="submit" class="btn btn-default">Change Password</button>
+          </form> -->
+          <button id="getBooks" class="btn btn-info">List Books</button>
+          <button id="clearBooksButton" class="btn btn-info">Clear Books</button>
+          <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-default">Change Password</button>
+          <button id="sign-out-button" class="btn btn-success">Sign Out</button>
+        <!-- Adding Book -->
+        <form id="add-book-form">
+          <input id="title" required placeholder="Type book title" name="book[title]" type="text"/>
+          <button type="submit" class="btn btn-default">Add Book</button>
+        </form>
+        <!-- Search Book -->
+        <form id="search-book-form">
+          <input id="search" required placeholder="Type book id" name="book[id]" type="text"/>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
+        <!-- Update Book title -->
+          <form id="updateBook">
+            <input required placeholder="id" name="book[id]" type="text"/>
+            <input required placeholder="New title" name="book[title]" type="text"/>
+            <button type="submit" value="Update" class="btn btn-default">Update</button>
+          </form>
+        </nav>
+      </section>
+    </section>
+    <main>
+      <div id="content" class="content"></div>
+      <!-- <div id="content-update" class="content-update"></div> -->
+    </main>
+    <!-- Feedback -->
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-md-12 box teal" id="feedback">
+          <h2 class="feedback">GA WDI Project II, By: 10</h2>
+        </div>
+      </div>
+    </div>
+    <!-- <footer class="copyrights">GA WDI Project II, By: 10</footer> -->
+
+<!-- Script to run the Authentication -->
+<script>
+// 	S	ign in
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+// Sign up
+var modal = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+// Change Password
+var modal = document.getElementById('id03');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
