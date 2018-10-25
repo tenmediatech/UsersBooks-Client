@@ -84,7 +84,6 @@ const updateBook = function (bookData) {
 
 // Showing 1 book from api for user
 const searchBook = function (bookData) {
-  // console.log(bookId)
   return $.ajax({
     url: config.apiUrl + `/books/${bookData.book.id}`,
     headers: {

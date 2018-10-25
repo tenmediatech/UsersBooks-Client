@@ -40,7 +40,6 @@ const onSignOut = function (event) {
 
 // Adding Book successful
 const onAddBook = function (event) {
-  console.log(event)
   event.preventDefault()
   const data = getFormFields(event.target)
   api.addBook(data)
@@ -85,7 +84,6 @@ const onDeleteBook = (event) => {
 // Update Book title
 const onUpdateBook = (event) => {
   event.preventDefault()
-  console.log(event)
   const bookData = getFormFields(event.target)
   // confirm function is the global browser function.
   if (confirm('Are you sure you want to update this book?')) {
