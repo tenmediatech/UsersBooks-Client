@@ -63,11 +63,28 @@ Steps followed in developing custom API for library application
 
 Documentation
 
-1) Client website on GitHub: https://tenmediatech.github.io/UsersBooks-Client/
-2) Server website API on GitHub: https://tenmediatech.github.io/UsersBooks/
+Backend Application overview
+- API Repo: https://github.com/tenmediatech/UsersBooks
+- API Deployed: https://usersbooksapi.herokuapp.com/
 
-2) Client Repository on GitHub https://github.com/tenmediatech/UsersBooks-Client
-3) Server API on Heroku website https://usersbooksapi.herokuapp.com/
+API on deployed version will handle all the AJEX call for all the operations on the resource on the database where the request comes from the client application. API has the all the MVC setup for processing the resources over the application.
+
+The Backend application serve the proper restful route for both the users and books.
+
+The controller modal are set to Open Record where users can search through the books but will need the authentication access to do update or delete the resource.
+
+Frontend Application overview
+- Client Repo: https://github.com/tenmediatech/UsersBooks-Client
+- Client Deployed: https://tenmediatech.github.io/UsersBooks-Client/
+
+The client application is organize to make restful request for the resources to display on the browser.
+Each of the opereation on the frontend application is distributed amongs various function to properly rander resouses to the user.
+All the UI portion of the frontend handle all the actual visual impact on the browser. What information and visual experience user get is decited at this level of application.
+UI for all the authentication is designed to peroperly intake the input data from the user to provide the required authentication back to user and drive them to the different areas of the application.
+
+Following are ways frontend application is designed to interaction with user.
+- Sign In, Sign Out, Change Password
+- Add Book, Show all books, Search One book, Update book and Delete book.
 
 3) Technologies used
 – Ruby, Rails, HTML, CSS, Javascript, jQuery, AJEX, DOM, Crome

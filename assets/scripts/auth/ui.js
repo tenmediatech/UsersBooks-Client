@@ -112,7 +112,7 @@ const searchBookFailure = function () {
 // Updating books
 const updateBooksSuccess = function (response) {
   $('#feedback').html('Book Updated successful')
-  $('#updateBook').trigger('reset')
+  $('#sign-up-form').trigger('reset')
   store.book = response.book
 }
 const updateBooksFailure = function () {
